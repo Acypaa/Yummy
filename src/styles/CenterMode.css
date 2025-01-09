@@ -1,0 +1,33 @@
+.slider-container {
+  padding-top: 40px;
+  width: 1250px;
+  margin: 0 auto;
+  margin-bottom: -100px;
+  height: 500px;
+}
+
+.slider-container__card {
+  padding-top: 20px;
+}
+
+.slick-slide.slick-center {
+  transform: scale(1.2);
+  transition: 500ms;
+}
+
+.slick-slide {
+  transition: 500ms;
+}
+
+.slick-slider {
+  height: 500px;
+}
+
+.slick-list {
+  height: 550px;
+}
+
+.slick-track {
+  padding-top: 40px;
+  height: 550px;
+}

@@ -1,0 +1,151 @@
+.AllRecipesNav {
+  width: 1200px;
+  height: 52px;
+  margin: 0 auto;
+  margin-top: 53px;
+  margin-bottom: 65px;
+  display: flex;
+}
+
+.AllRecipesNav__btn {
+  width: 192px;
+  height: 52px;
+  border-radius: 30px;
+  border: none;
+  cursor: pointer;
+  background-color: rgba(123, 138, 111, 1);
+  color: white;
+  font-family: 'Merriweather', sans-serif;
+  text-transform: uppercase;
+  font-weight: 900;
+  font-size: 16px;
+  line-height: 20.8px;
+}
+
+.AllRecipesNav__btn:first-child {
+  margin-right: 80px;
+}
+
+.AllRecipesNav__form {
+  width: 486px;
+  height: 52px;
+  margin-left: 250px;
+}
+
+.AllRecipesNav__input {
+  width: 340px;
+  height: 52px;
+  border: 1px solid rgba(142, 76, 46, 1);
+  background-color: rgba(228, 228, 196, 1);
+}
+
+.AllRecipesNav__input::placeholder {
+  font-family: 'Merriweather', sans-serif;
+  color: rgba(142, 76, 46, 1);
+  text-transform: uppercase;
+  padding-left: 40px;
+  font-weight: 900;
+  font-size: 16px;
+  line-height: 20.8px;
+}
+
+.AllRecipesNav__form-btn {
+  width: 146px;
+  height: 52px;
+  border: none;
+  background-color: rgba(142, 76, 46, 1);
+  font-weight: 900;
+  font-family: 'Merriweather', sans-serif;
+  font-size: 16px;
+  line-height: 20.8px;
+  color: white;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.modal__top {
+  width: 117px;
+  margin: 0 auto;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  font-size: 20px;
+  text-transform: uppercase;
+  font-family: 'Merriweather', sans-serif;
+  font-weight: 900;
+  line-height: 26px;
+  color: rgba(43, 37, 32, 1);
+}
+
+.modal__heading {
+  width: 120px;
+  margin-left: 42px;
+  font-family: 'Merriweather', sans-serif;
+  font-weight: 900;
+  font-size: 16px;
+  line-height: 20.8px;
+  text-transform: uppercase;
+  color: rgba(0, 0, 0, 1);
+}
+
+.modal__btns {
+  width: 513px;
+  margin-top: 28px;
+  margin-left: 42px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.modal__btn {
+  padding: 11px 27px 11px 27px;
+  margin-right: 40px;
+  margin-bottom: 28px;
+  border-radius: 30px;
+  border: none;
+  background-color: rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+  font-family: 'Merriweather', sans-serif;
+  font-weight: 700;
+  font-size: 10px;
+  line-height: 13px;
+  color: rgba(43, 37, 32, 1);
+  text-transform: uppercase;
+}
+
+.modal__select {
+  width: 599px;
+  height: 52px;
+  margin-left: 42px;
+  margin-top: 23px;
+  background-color: rgba(239, 231, 221, 0);
+  border-radius: 10px;
+}
+
+.modal__close-btn {
+  width: 12px;
+  height: 12px;
+  position: absolute;
+  top: 25px;
+  right: 32px;
+  cursor: pointer;
+  border: none;
+  background-color: rgba(239, 231, 221, 0);
+}
+
+.modal__close-btn::before,
+.modal__close-btn::after {
+	content: '';
+	position: absolute;
+	top: 0px;
+	display: block;
+	width: 16px;
+	height: 3px;
+	background: #000;
+}
+
+.modal__close-btn::before {
+	transform: rotate(45deg);
+}
+
+.modal__close-btn::after {
+	transform: rotate(-45deg);
+}

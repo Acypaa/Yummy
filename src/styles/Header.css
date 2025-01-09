@@ -1,0 +1,151 @@
+.Header {
+  width: 1200px;
+  height: 85px;
+  margin: 0 auto;
+  margin-top: 19px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.Header-Logo {
+  width: 118px;
+  height: 85px;
+}
+
+.Header__navigation {
+  width: 281px;
+  height: 85px;
+}
+
+.Header__list {
+  height: 85px;
+  font-family: 'Merriweather', sans-serif;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 50px;
+}
+
+.Header__link {
+  text-decoration: none;
+  font-weight: 900;
+  line-height: 15.6px;
+  font-size: 12px;
+  letter-spacing: 3%;
+  color: rgba(142, 76, 46, 1);
+  text-transform: uppercase;
+  text-decoration: none;
+    background-image: linear-gradient(currentColor, currentColor);
+    background-position: 0% 100%;
+    background-repeat: no-repeat;
+    background-size: 0% 2px;
+    transition: background-size .3s;
+}
+
+.Header__link:hover {
+  background-size: 100% 2px;
+}
+
+.Header__btn {
+  border: none;
+  background-color: rgba(0, 0, 0, 0);
+  cursor: pointer;
+}
+
+.modalContent {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 162px;
+}
+
+.modal__enter {
+  width: 258px;
+  display: flex;
+  flex-direction: column;
+}
+
+.modal__form {
+  display: flex;
+  flex-direction: column;
+}
+
+.modal__headings {
+  margin: 0 auto;
+  text-align: center;
+  font-family: 'Merriweather', sans-serif;
+  font-weight: 900;
+  font-size: 20px;
+  line-height: 26px;
+  color: rgba(43, 37, 32, 1);
+  margin-bottom: 24px;
+  margin-top: 35px;
+  text-transform: uppercase;
+}
+
+.modal__registration {
+  width: 258px;
+  display: flex;
+  flex-direction: column;
+}
+
+.modal__btn__header {
+  width: 258px;
+  height: 56px;
+  color: rgba(43, 37, 32, 1);
+  border-radius: none;
+  margin-top: 25px;
+  background-color: rgba(43, 37, 32, 1);
+  border: none;
+  color: rgba(248, 248, 248, 1);
+  font-family: 'Merriweather', sans-serif;
+  font-weight: 900;
+  font-size: 12px;
+  line-height: 15.6px;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.modal__close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  border: none;
+  background-color: rgba(0, 0, 0, 0);
+  cursor: pointer;
+}
+
+.modal__label {
+  font-family: 'Merriweather', sans-serif;
+  font-weight: 900;
+  font-size: 16px;
+  line-height: 20.8px;
+  color: rgba(79, 50, 29, 1);
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+.modal__input {
+  width: 258px;
+  height: 56px;
+  margin-bottom: 25px;
+}
+
+.modal__close::before,
+.modal__close::after {
+	content: '';
+	position: absolute;
+	top: 0px;
+	display: block;
+	width: 16px;
+	height: 3px;
+	background: #000;
+}
+
+.modal__close::before {
+	transform: rotate(45deg);
+}
+
+.modal__close::after {
+	transform: rotate(-45deg);
+}

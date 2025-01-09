@@ -1,0 +1,12 @@
+{
+  "id": 1,
+  "name": "Харчо",
+  "time": "2 часа",
+  "timeOnKitchen": "2 часа",
+  "country": "Грузия",
+  "quantity": "4 порции",
+  "ingredients": "",
+  "steps" : "",
+  "img": "../img/AllRecipesCard/Xarcho.png",
+  "imgFlag": ""
+}

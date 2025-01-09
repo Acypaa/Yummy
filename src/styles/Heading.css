@@ -1,0 +1,26 @@
+.Heading {
+  width: 808px;
+  height: 62px;
+  margin: 0 auto;
+  margin-top: 214px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 60px;
+}
+
+.Heading__line {
+  width: 161px;
+  height: 0px;
+  border: 1px solid rgba(79, 50, 29, 1);
+}
+
+.Heading__text {
+  font-family: 'Merriweather', sans-serif;
+  font-weight: 900;
+  font-size: 48px;
+  line-height: 62.4px;
+  letter-spacing: 3%;
+  color: rgba(79, 50, 29, 1);
+  text-transform: uppercase;
+}

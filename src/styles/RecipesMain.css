@@ -1,0 +1,125 @@
+.RecipesMain {
+  width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-around;
+}
+
+.Circle {
+  width: 490px;
+  height: 490px;
+  margin-top: 113px;
+  margin-bottom: 96px;
+  border-radius: 50%;
+  background-color: #d2d2b6;
+  position: relative;
+}
+
+.Circle__btn {
+  width: 200px;
+  height: 110px;
+  border: none;
+  border-radius: 241.5px;
+  position: absolute;
+  top: 178px;
+  left: 140px;
+  color: rgba(206, 32, 32, 1);
+  font-family: 'Merriweather', sans-serif;
+  text-transform: uppercase;
+  font-size: 16px;
+  font-weight: 900;
+  line-height: 20.8px;
+  cursor: pointer;
+  background-color: rgba(217, 217, 217, 1);
+  box-shadow: 0px 0px 10px 1px rgba(95,82,75,1);
+}
+
+.Circle__btn-link {
+  text-decoration: none;
+  color: rgba(206, 32, 32, 1);
+}
+
+.snacks {
+  width: 186px;
+  height: 233px;
+  position: absolute;
+  top: -100px;
+  left: 280px;
+}
+
+.salads {
+  width: 197px;
+  height: 201px;
+  position: absolute;
+  top: -85px;
+  left: -160px;
+}
+
+.hotDish {
+  width: 250px;
+  height: 223px;
+  position: absolute;
+  bottom: 125px;
+  right: 160px; 
+}
+
+.desserts {
+  width: 201px;
+  height: 215px;
+  position: absolute;
+  top: 75px;
+  right: 230px;
+}
+
+.soups {
+  width: 186px;
+  height: 210px;
+  position: absolute;
+  bottom: 140px;
+  left: 280px;
+}
+
+.SignUp {
+  width: 330px;
+  height: 490px;
+
+  margin-top: 113px;
+  margin-bottom: 135px;
+  
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  position: relative;
+}
+
+.SignUp__girl {
+  position: absolute;
+  bottom: 0;
+}
+
+.SignUp__top {
+  width: 330px;
+  height: 169px;
+  border-radius: 30px;
+  background-color: #d2d2b6;
+  font-family: 'Merriweather', sans-serif;
+  font-weight: 900;
+  font-size: 16px;
+  line-height: 20.8px;
+  color: rgba(142, 76, 46, 1);
+  text-transform: uppercase;
+  text-align: center;
+  padding-top: 50px;
+}
+
+.SignUp__top-link {
+  text-decoration: none;
+  color: rgba(206, 32, 32, 1);
+}
+
+.SignUp__bottom {
+  width: 330px;
+  height: 169px;
+  border-radius: 30px;
+  background-color: #d2d2b6;
+}

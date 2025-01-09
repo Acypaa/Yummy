@@ -1,0 +1,5 @@
+export const ALLRECIPES_ROUTE = '/AllRecipes'
+export const RECIPE_ROUTE = '/Recipe'
+export const MAIN_ROUTE = '/Main'
+export const PROFILE_ROUTE = '/Profile'
+export const FRIENDS_ROUTE = '/Friends'

@@ -1,0 +1,37 @@
+.AllRecipesCard {
+  width: 338px;
+  height: 246px;
+  position: relative;
+  border: none;
+  background-color: rgba(43, 37, 32, 1);
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.AllRecipesCard__img:hover {
+  transform: scale(1.1);
+}
+
+.AllRecipesCard__img {
+  width: 338px;
+  height: 198px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: 500ms;
+}
+
+.AllRecipesCard__title {
+  width: 338px;
+  height: 48px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  color: white;
+  font-family: 'Merriweather', sans-serif;
+  text-transform: uppercase;
+  font-weight: 900;
+  font-size: 16px;
+  line-height: 20.8px;
+  padding-top: 13px;
+}

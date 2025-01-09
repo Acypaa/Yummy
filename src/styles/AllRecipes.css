@@ -1,0 +1,27 @@
+.AllRecipes {
+  display: flex;
+  flex-direction: column;
+  /*gap: calc(100vh - 234px);*/
+}
+
+.AllRecipes__title {
+  width: 136px;
+  height: 31px;
+  margin: 0 auto;
+  font-family: 'Merriweather', sans-serif;
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 31.2px;
+  color: rgba(79, 50, 29, 1);
+  text-transform: uppercase;
+}
+
+.AllRecipesCards {
+  width: 1200px;
+  margin: 0 auto;
+  margin-bottom: 90px;
+  display: flex;
+  gap: 93px;
+  flex-direction: row;
+  flex-wrap: wrap;
+}

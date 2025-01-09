@@ -1,0 +1,28 @@
+.RecipesMainCircle {
+  position: relative;
+  border: none;
+  background: none;
+  cursor: pointer;
+  border-radius: 50%;
+  transition: 500ms;
+}
+
+.RecipesMainCircle:hover {
+  transform: scale(1.1);
+}
+
+.RecipesMainCircle__title {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.RecipesMainCircle__img {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 176px;
+  height: 168px;
+  border-radius: 50%;
+  box-shadow: 0px 0px 10px 0px rgba(95,82,75,1);
+}

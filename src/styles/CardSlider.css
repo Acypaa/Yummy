@@ -1,0 +1,55 @@
+.CardSlider {
+  width: 245px;
+  height: 402px;
+  position: relative;
+  margin: 0 auto;
+}
+
+.CardSlider__img {
+  width: 220px;
+  position: absolute;
+  top: 0;
+  left: 14px;
+  z-index: 1;
+  box-shadow: 0px 0px 7px 4px rgba(0,0,0,0.25);
+  border-radius: 50%;
+  object-fit: fill;
+}
+
+.CardSlider__bg {
+  width: 245px;
+  height: 317px;
+  background-color: #D2D2B6;
+  border-radius: 50px;
+  position: absolute;
+  bottom: 0;
+  box-shadow: 0px 4px 4px 0px rgba(0,0,0,0.25);
+}
+
+.CardSlider__text {
+  width: 133px;
+  height: 70px;
+  position: absolute;
+  bottom: 85px;
+  left: 30px;
+  font-family: 'Merriweather', sans-serif;
+  font-weight: 900;
+  font-size: 16px;
+  line-height: 20.11px;
+  color: rgba(79, 50, 29, 1);
+  text-transform: uppercase;
+}
+
+.CardSlider__bottom {
+  height: 36px;
+  position: absolute;
+  bottom: 30px;
+  left: 30px;
+  display: flex;
+  gap: 56px;
+}
+
+.CardSlider__country {
+  width: 36px;
+  height: 26px;
+}

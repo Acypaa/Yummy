@@ -1,0 +1,5 @@
+.RecipeList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 93px;
+}
