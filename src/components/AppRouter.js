@@ -4,7 +4,7 @@ import {publicRoutes} from "../routes";
 import {ALLRECIPES_ROUTE, MAIN_ROUTE} from "../utils/consts";
 import {Context} from "../index";
 import {observer} from "mobx-react-lite";
-//import Main from '../pages/main/Main';
+import Main from '../pages/main/Main';
 
 const AppRouter = observer(() => {
     //const {user} = useContext(Context)

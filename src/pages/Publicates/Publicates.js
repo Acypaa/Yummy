@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from 'react'; 
+
 import Header from '../../components/Header';
-import { Link, useNavigate } from 'react-router-dom'; 
 import Footer from '../../components/Footer';
+import React, { useEffect, useState } from 'react';
+import { Link, useNavigate } from "react-router-dom";
+import { FRIENDS_ROUTE, FAVORITES_ROUTE } from '../../utils/consts';
 import '../../styles/Profile.css';
-import { FRIENDS_ROUTE, FAVORITES_ROUTE, PUBLICATES_ROUTE } from '../../utils/consts'; 
 
-
-const Profile = () => {
+const Publicates = () => {
   const navigate = useNavigate();
   const [username, setUsername] = useState('');
 
@@ -21,32 +21,29 @@ const Profile = () => {
 
   const handleLogout = () => {
     localStorage.removeItem('currentUser');
-    window.location.reload(); 
-    navigate('/');
-};
+    window.location.reload();
+    navigate('/'); 
+  };
 
   return (
     <div>
       <Header />
       <div className="Profile">
         <div className="Profile__left">
-          <h2 className='Profile__heading'>{username}</h2>
+        <h2 className='Profile__heading'>{username}</h2>
           <Link to={FRIENDS_ROUTE} className='link__friends'>
-            <p className='Profile__line line-Friends'>Подписки</p>
+            <p className='Profile__line'>Подписки</p>
           </Link>
-          <Link to={FAVORITES_ROUTE} className='link__favorites'>
+          <Link to={FAVORITES_ROUTE} className='link__friends'>
             <p className='Profile__line'>Избранное</p>
           </Link>
-          <Link to={PUBLICATES_ROUTE} className='link__publicates'>
-            <p className='Profile__line'>Публикации</p>
-          </Link>
+          <p className='Profile__line line-Friends'>Публикации</p>
           <button className='Profile__btn' onClick={handleLogout}>Выход</button>
         </div>
         <div className="profile__right">
-          <h1 className='Profile__main-heading'>Профиль</h1>
-          <button className='right__btn'>Публикации</button>
-          <button className='right__btn'>Избранное</button>
-          <input type="text" className='Profile__input' placeholder='Поиск рецепта' />
+          <h1 className='Profile__main-heading'>Публикации</h1>
+          <button className='right__btn btn-friends'>Список публикаций</button>
+          <input type="text" className='Profile__input' placeholder='Поиск публикации' />
         </div>
       </div>
       <Footer />
@@ -54,4 +51,4 @@ const Profile = () => {
   );
 };
 
-export default Profile;
+export default Publicates;

@@ -15,7 +15,7 @@ const WelcomeYummy = () => {
             ВКУСНЫЕ РЕЦЕПТЫ
           </div>
           <button className='WelcomeYummy__button'>
-            <Link to="/AllRecipes" className='WelcomeYummy__button'>Рецепты</Link>
+            <Link to="/allrecipes" className='WelcomeYummy__button'>Рецепты</Link>
           </button>
         </div>
         <div className="WelcomeYummy-inner__right">

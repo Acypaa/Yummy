@@ -144,3 +144,10 @@ export const recipe = [
     kitchen: 'Национальная кухня'
   }
 ]
+// export const recipes = [
+//     {id: 1,
+//       name: 'Блины',
+//       img: '../img/AllRecipesCard/12.png',
+//     },
+  
+// ];

@@ -1,10 +1,8 @@
 .AllRecipesNav {
   width: 1200px;
-  height: 52px;
   margin: 0 auto;
-  margin-top: 53px;
-  margin-bottom: 65px;
   display: flex;
+  flex-direction: column;
 }
 
 .AllRecipesNav__btn {
@@ -31,10 +29,17 @@
   height: 52px;
   margin-left: 250px;
 }
-
+.button-container {
+  display: flex;
+  justify-content: flex-start; /* Распределяет кнопки по краям */
+  align-items: center; /* Центрирует элементы по вертикали */
+  margin: 20px 0; /* Отступы сверху и снизу */
+}
 .AllRecipesNav__input {
   width: 340px;
   height: 52px;
+  margin-left: 0;
+  margin-right: 0;
   border: 1px solid rgba(142, 76, 46, 1);
   background-color: rgba(228, 228, 196, 1);
 }
@@ -149,3 +154,64 @@
 .modal__close-btn::after {
 	transform: rotate(-45deg);
 }
+
+.modal__content {  
+  display: flex;  
+  flex-direction: column; 
+  align-items: center;     
+  padding: 20px;       
+}  
+
+.modal__top {  
+  text-align: center;    
+  margin-bottom: 20px;  
+}
+
+
+/* .AllRecipesNav {
+  margin-top: 53px;
+  margin-bottom: 65px;
+  display: flex;
+  flex-direction: column; 
+  min-height: 100vh; 
+}
+
+.recipe-list {
+  display: flex;
+  flex-wrap: wrap; 
+  justify-content: space-around; 
+  margin-top: 20px;
+}
+
+.recipe-card {
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 10px;
+  width: 200px; 
+  text-align: center; 
+}
+
+.AllRecipesNav__form {
+  margin: 20px 0; 
+}
+
+.AllRecipesNav__input {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.AllRecipesNav__form-btn {
+  margin-left: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #4CAF50; 
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.AllRecipesNav__form-btn:hover {
+  background-color: #45a049; 
+} */
