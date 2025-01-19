@@ -280,7 +280,13 @@ const AllRecipesNav = ({ addRecipe }) => {
     }, []);
 
     const openAddRecipeModal = () => {
-        setModalIsOpen(true);
+        if (!currentUser) {
+            // Если пользователь не авторизован, перенаправляем на страницу входа
+            alert('Вы должны быть авторизованы для добавления рецепта');
+        } else {
+            // Если авторизован, открываем модальное окно
+            setModalIsOpen(true);
+        }
     };
 
     const closeAddRecipeModal = () => {
