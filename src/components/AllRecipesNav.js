@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 
 Modal.setAppElement('#root');
 
-const AllRecipesNav = ({ addRecipe }) => {
+const AllRecipesNav = ({ addRecipe, handleSearch }) => {
     const [modalIsOpen, setModalIsOpen] = useState(false);
     const [filterModalIsOpen, setFilterModalIsOpen] = useState(false);
     const [newRecipe, setNewRecipe] = useState({
@@ -21,13 +21,15 @@ const AllRecipesNav = ({ addRecipe }) => {
         cuisine: '',
         servings: 1
     });
-    const [searchTerm, setSearchTerm] = useState('');
+    const [recipes, setRecipes] = useState([]);
     const navigate = useNavigate();
     const currentUser = JSON.parse(localStorage.getItem('currentUser')); // Получаем текущего пользователя
 
     useEffect(() => {
         const storedRecipes = JSON.parse(localStorage.getItem('recipes')) || [];
+        setRecipes(storedRecipes); // Изначально показываем все рецепты
     }, []);
+
 
     const openAddRecipeModal = () => {
         if (!currentUser) {
@@ -60,7 +62,7 @@ const AllRecipesNav = ({ addRecipe }) => {
             time: `${newRecipe.prepTimeHours} ч. ${newRecipe.prepTimeMinutes} мин`,
             timeOnKitchen: `${newRecipe.cookTimeHours} ч. ${newRecipe.cookTimeMinutes} мин`,
             country: newRecipe.cuisine || '',
-            quantity: `${newRecipe.quantity} порций`,
+            quantity: `${newRecipe.servings} порций`,
             author: currentUser ? currentUser.username : 'Не указан' 
         };
 
@@ -93,7 +95,6 @@ const AllRecipesNav = ({ addRecipe }) => {
 
         localStorage.setItem('recipes', JSON.stringify(updatedRecipes));
         alert('Рецепт был успешно удален.');
-        // Обновите состояние или вызовите функцию, чтобы обновить отображаемые рецепты
     };
 
     return (
@@ -101,16 +102,15 @@ const AllRecipesNav = ({ addRecipe }) => {
             <div className="button-container">
                 <button className='AllRecipesNav__btn' onClick={openFilterModal}>Фильтры</button>
                 <button className='AllRecipesNav__btn' onClick={openAddRecipeModal}>Добавить</button>
-                <input 
-                    type="text" 
-                    placeholder='Поиск рецепта...' 
-                    className='AllRecipesNav__input'
-                    value={searchTerm}
-                    onChange={(e) => setSearchTerm(e.target.value)}
-                />
-                <button className='AllRecipesNav__form-btn'>Найти</button>
+                <div className="search-container">
+                    <input 
+                        type="text" 
+                        placeholder='Поиск рецепта...' 
+                        className='AllRecipesNav__input'
+                        onChange={handleSearch} 
+                    />
+                </div>
             </div>
-
             {/* Модальное окно фильтров */}
             <Modal isOpen={filterModalIsOpen} onRequestClose={closeFilterModal}
                 style={{

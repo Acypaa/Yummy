@@ -7,8 +7,6 @@ import {observer} from "mobx-react-lite";
 import Main from '../pages/main/Main';
 
 const AppRouter = observer(() => {
-    //const {user} = useContext(Context)
-    //console.log(user)
     return (
         <Routes>
             {publicRoutes.map(({path, Component}) =>

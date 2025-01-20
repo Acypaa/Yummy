@@ -109,7 +109,7 @@ const UserProfile = () => {
     };
 
     if (!userData) {
-        return <div>Загрузка...</div>; // Показать загрузку, пока данные не загружены
+        return <div>Загрузка...</div>; 
     }
 
     return (

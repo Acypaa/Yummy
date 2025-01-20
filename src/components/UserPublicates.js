@@ -16,7 +16,7 @@ const UserPublicates = () => {
   }, [username]);
 
   return (
-    <div className="container"> {/* Контейнер для Flexbox */}
+    <div className="container"> 
       <Header />
       <div className="Profile">
         <div className="Profile__left">
@@ -50,7 +50,7 @@ const UserPublicates = () => {
           </div>
         </div>
       </div>
-      <Footer /> {/* Футер должен быть здесь, вне Profile */}
+      <Footer /> 
     </div>
   );
 };
