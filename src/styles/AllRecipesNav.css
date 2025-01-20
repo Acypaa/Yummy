@@ -31,10 +31,12 @@
 }
 .button-container {
   display: flex;
-  justify-content: flex-start; /* Распределяет кнопки по краям */
+  justify-content: space-between; /* Распределяет кнопки по краям */
   align-items: center; /* Центрирует элементы по вертикали */
   margin: 20px 0; /* Отступы сверху и снизу */
 }
+
+
 .AllRecipesNav__input {
   width: 340px;
   height: 52px;

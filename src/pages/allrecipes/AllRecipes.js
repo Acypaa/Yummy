@@ -8,7 +8,9 @@ import Footer from '../../components/Footer';
 
 const AllRecipes = () => {
     const [recipes, setRecipes] = useState([]);
+    const [searchTerm, setSearchTerm] = useState(''); // Состояние для хранения поискового запроса
     const store = new RecipeStore();
+
     useEffect(() => {
         console.log("Компонент AllRecipes загружен");
         const storedRecipes = JSON.parse(localStorage.getItem('recipes')) || [];
@@ -21,14 +23,23 @@ const AllRecipes = () => {
         localStorage.setItem('recipes', JSON.stringify(updatedRecipes));
     };
 
+    const handleSearch = (event) => {
+        setSearchTerm(event.target.value); // Обновляем состояние поискового запроса
+    };
+
+    // Фильтруем рецепты на основе поискового запроса
+    const filteredRecipes = recipes.filter(recipe =>
+        recipe.name.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+
     return (
         <div className="all-recipes-container">
             <Header /> 
-            <AllRecipesNav addRecipe={addRecipe} />
+            <AllRecipesNav addRecipe={addRecipe} handleSearch={handleSearch} /> {/* Передаем handleSearch в AllRecipesNav */}
             <h1>Все Рецепты</h1>
             <div className="all-recipes">
-                {recipes.length > 0 ? (
-                    recipes.map(recipe => (
+                {filteredRecipes.length > 0 ? (
+                    filteredRecipes.map(recipe => (
                         <AllRecipesCard key={recipe.id} recipe={recipe} />
                     ))
                 ) : (
