@@ -3,18 +3,21 @@
     flex-direction: column;
     min-height: 100vh;
   }
+
 .Profile {
     width: 1200px;
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
-    flex: 1;
+    flex-direction: row;
+    flex-grow: 1; /* Этот блок растягивается по высоте */
+    height: auto;
   }
   
   .Profile__left {
     margin-top: 100px;
     width: 303px;
-    height: 462px;
+    min-height: 462px;
     margin-bottom: 120px;
     border-radius: 50px;
     background-color: rgba(210, 210, 182, 1);
@@ -76,7 +79,7 @@
   .profile__right {
     margin-top: 100px;
     width: 794px;
-    height: auto; /* Изменено на auto для динамического размера */
+    height: auto;
   }
   
   .Profile__main-heading {
@@ -174,5 +177,4 @@
     justify-content: space-between; /* Выравнивание карточек по горизонтали */
     gap: 20px; /* Отступ между карточками */
     margin-top: 20px; /* Отступ сверху для контейнера */
-    margin-bottom: 100px; /* Отступ снизу, чтобы не перекрывать футер */
   }

@@ -3,6 +3,7 @@
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
+  height: auto;
 }
 
 .Profile__left {
@@ -111,7 +112,7 @@
 .profile__right {
   margin-top: 100px;
   width: 794px;
-  height: 405px;
+  height: auto;
 }
 
 .Profile__main-heading {
