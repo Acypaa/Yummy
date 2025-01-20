@@ -90,6 +90,11 @@ const UserProfile = () => {
             return;
         }
 
+        if (currentUser.username == username) {
+            alert('Нельзя подписаться на самого себя.');
+            return;
+        }
+
         const subscriptions = JSON.parse(localStorage.getItem('subscriptions')) || {};
         if (isSubscribed) {
             subscriptions[currentUser.username] = subscriptions[currentUser.username].filter(
