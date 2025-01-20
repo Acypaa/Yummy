@@ -39,6 +39,7 @@
   gap: 93px; 
   flex-direction: row;
   flex-wrap: wrap; 
+  min-height: 46vh;
 }
 
 .AllRecipes__title {
