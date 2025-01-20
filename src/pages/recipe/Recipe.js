@@ -123,13 +123,13 @@ const Recipe = () => {
             </div>
             <h2 style={{ textAlign: 'center' }}>Ингредиенты</h2>
             <div className="ingredients ingredients-text">
-                {recipe.ingredients.split(',').map((ingredient, index) => (
+                {recipe.ingredients.split('\n').map((ingredient, index) => (
                     <div key={index}>{ingredient.trim()}</div>
                 ))}
             </div>
             <h2 style={{ textAlign: 'center' }}>Шаги</h2>
             <div className="Recipe__steps">
-                {recipe.steps.split('.').map((step, index) => (
+                {recipe.steps.split('\n').map((step, index) => (
                     <div key={index}>{step.trim()}</div>
                 ))}
             </div>
