@@ -76,6 +76,38 @@
   text-transform: uppercase;
 }
 
+.Profile__btn {
+  margin-top: 80px;
+  width: 223px;
+  height: 44px;
+  cursor: pointer;
+  background-color: rgba(123, 138, 111, 1);
+  color: rgba(248, 248, 248, 1);
+  border: none;
+  font-family: 'Merriweather', sans-serif;
+  font-weight: 900;
+  font-size: 15px;
+  line-height: 19.5px;
+  color: rgba(248, 248, 248, 1);
+  text-transform: uppercase;
+}
+.subscribe-btn {
+  margin-top: 80px;
+  width: 223px;
+  height: 44px;
+  cursor: pointer;
+  background-color: rgba(123, 138, 111, 1);
+  color: rgba(248, 248, 248, 1);
+  border: none;
+  font-family: 'Merriweather', sans-serif;
+  font-weight: 900;
+  font-size: 15px;
+  line-height: 19.5px;
+  color: rgba(248, 248, 248, 1);
+  text-transform: uppercase;
+}
+
+
 .profile__right {
   margin-top: 100px;
   width: 794px;
@@ -127,4 +159,10 @@
 
 .btn-friends {
   margin-right: 373px;
+}
+
+.subscription-item {
+  margin-top: 20px;
+  font-family: 'Merriweather', sans-serif;
+  font-size: 20px;
 }

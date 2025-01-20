@@ -3,6 +3,7 @@
   height: 130px;
   background-color: rgba(123, 138, 111, 1);
   font-weight: 700;
+  position: relative;
 }
 
 .Footer-inner {
