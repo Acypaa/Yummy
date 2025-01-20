@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import Modal from 'react-modal';
 import '../styles/AllRecipesNav.css';
-import { useNavigate } from 'react-router-dom';
 
 Modal.setAppElement('#root');
 
-const AllRecipesNav = ({ addRecipe, handleSearch }) => {
-    const [modalIsOpen, setModalIsOpen] = useState(false);
+const AllRecipesNav = ({ addRecipe, handleSearch, onFilterChange, onApplyFilters, onClearFilters, selectedCuisine }) => {
+    const [modalIsOpen, setModalIsOpen] = useState(false); 
     const [filterModalIsOpen, setFilterModalIsOpen] = useState(false);
     const [newRecipe, setNewRecipe] = useState({
         id: 0,
@@ -19,20 +18,28 @@ const AllRecipesNav = ({ addRecipe, handleSearch }) => {
         cookTimeHours: 0,
         cookTimeMinutes: 0,
         cuisine: '',
-        servings: 1
+        servings: 1,
+        dishType: ''
     });
+    const [selectedDishType, setSelectedDishType] = useState(''); 
+
     const [recipes, setRecipes] = useState([]);
-    const navigate = useNavigate();
-    const currentUser = JSON.parse(localStorage.getItem('currentUser')); // Получаем текущего пользователя
+    const currentUser = JSON.parse(localStorage.getItem('currentUser')); 
 
     useEffect(() => {
         const storedRecipes = JSON.parse(localStorage.getItem('recipes')) || [];
-        setRecipes(storedRecipes); // Изначально показываем все рецепты
+        setRecipes(storedRecipes); 
     }, []);
 
-
     const openAddRecipeModal = () => {
-        setModalIsOpen(true);
+        // setModalIsOpen(true);
+        if (!currentUser) {
+            // Если пользователь не авторизован, перенаправляем на страницу входа
+            alert('Вы должны быть авторизованы для добавления рецепта');
+        } else {
+            // Если авторизован, открываем модальное окно
+            setModalIsOpen(true);
+        }
     };
 
     const closeAddRecipeModal = () => {
@@ -77,7 +84,8 @@ const AllRecipesNav = ({ addRecipe, handleSearch }) => {
             cookTimeHours: 0,
             cookTimeMinutes: 0,
             cuisine: '',
-            servings: 1
+            servings: 1,
+            dishType: ''
         });
 
         closeAddRecipeModal();
@@ -89,6 +97,26 @@ const AllRecipesNav = ({ addRecipe, handleSearch }) => {
 
         localStorage.setItem('recipes', JSON.stringify(updatedRecipes));
         alert('Рецепт был успешно удален.');
+    };
+
+    const handleApplyFilters = () => {
+        onApplyFilters(); 
+        console.log('Фильтры применены');
+        closeFilterModal();
+    };
+    
+    const handleClearFilters = () => {
+        console.log('Фильтры очищены');
+        closeFilterModal();
+    };
+    const handleDishTypeChange = (type) => {
+        setSelectedDishType(type); 
+        onFilterChange(type, selectedCuisine); 
+    };
+
+    const handleCuisineChange = (event) => {
+        const selectedCuisine = event.target.value;
+        onFilterChange(selectedDishType, selectedCuisine); 
     };
 
     return (
@@ -127,21 +155,34 @@ const AllRecipesNav = ({ addRecipe, handleSearch }) => {
                 <h2 className='modal__top'>Фильтры</h2>
                 <h3 className='modal__heading'>Тип блюда</h3>
                 <div className="modal__btns">
-                    {['Первые блюда', 'Вторые Блюда', 'Салаты', 'Закуски', 'Выпечка', 'Десерты'].map((type) => (
-                        <button key={type} className='modal__btn'>{type}</button>
+                    {['Первые блюда', 'Вторые Блюда', 'Салаты', 'Закуски', 'Выпечка', 'Десерты', 'Напитки'].map((type) => (
+                    <button 
+                        key={type} 
+                        className={`modal__btn ${selectedDishType === type ? 'active' : ''}`} 
+                        onClick={() => handleDishTypeChange(type)}
+                    >
+                        {type}
+                    </button>
                     ))}
                 </div>
                 <h3 className='modal__heading'>Кухня мира</h3>
-                <select name="country" id="country-select" className='modal__select'>
-                    <option value="">Например, Русская..</option>
-                    <option value="Французская">Французская кухня</option>
-                    <option value="Итальянская">Итальянская кухня</option>
-                    <option value="Грузинская">Грузинская кухня</option>
-                    <option value="Узбекская">Узбекская кухня</option>
-                    <option value="Корейская">Корейская кухня</option>
-                    <option value="Японская">Японская кухня</option>
-                    <option value="Китайская">Китайская кухня</option>
+                <select name="cuisine" id="country-select" className='modal__select'onChange={handleCuisineChange}>
+                    <option value="">Выберите кухню</option>
+                    <option value="Русская">Русская</option>
+                    <option value="Французская">Французская</option>
+                    <option value="Итальянская">Итальянская</option>
+                    <option value="Грузинская">Грузинская</option>
+                    <option value="Узбекская">Узбекская</option>
+                    <option value="Корейская">Корейская</option>
+                    <option value="Японская">Японская</option>
+                    <option value="Китайская">Китайская</option>
                 </select>
+
+                <div className="modal__actions">
+                    <button onClick={handleApplyFilters} className='modal__apply-btn'>Применить</button>
+                    <button onClick={onClearFilters} className='modal__clear-btn'>Очистить</button>
+                </div>
+
                 <button onClick={closeFilterModal} className='modal__close-btn'></button>
             </Modal>
 
@@ -182,8 +223,20 @@ const AllRecipesNav = ({ addRecipe, handleSearch }) => {
                     <input 
                         type="file" 
                         accept="image/*"
-                        onChange={(e) => setNewRecipe({ ...newRecipe, image: URL.createObjectURL(e.target.files[0]) })} 
-                    />
+                        onChange={(e) => {
+                            const file = e.target.files[0];
+                            if (file) {
+                                const reader = new FileReader();
+
+                                reader.onloadend = () => {
+                                    // Сохраняем Base64 строку в состоянии
+                                    setNewRecipe({ ...newRecipe, image: reader.result });
+                                };
+
+                                // Читаем файл как Data URL
+                                reader.readAsDataURL(file);
+                            }
+                        }}                     />
                     <textarea 
                         placeholder="Ингредиенты" 
                         onChange={(e) => setNewRecipe({ ...newRecipe, ingredients: e.target.value })} 
@@ -235,10 +288,23 @@ const AllRecipesNav = ({ addRecipe, handleSearch }) => {
                         <option value="Французская">Французская</option>
                         <option value="Итальянская">Итальянская</option>
                         <option value="Грузинская">Грузинская</option>
-                        <option value="Узбекская">Узбекская кухня</option>
+                        <option value="Узбекская">Узбекская</option>
                         <option value="Корейская">Корейская</option>
                         <option value="Японская">Японская</option>
                         <option value="Китайская">Китайская</option>
+                    </select>
+                    <select 
+                        name="dishType" 
+                        onChange={(e) => setNewRecipe({ ...newRecipe, dishType: e.target.value })} // Добавляем выбор типа блюда
+                    >
+                        <option value="">Выберите тип блюда</option>
+                        <option value="Первые блюда">Первые блюда</option>
+                        <option value="Вторые блюда">Вторые блюда</option>
+                        <option value="Салаты">Салаты</option>
+                        <option value="Закуски">Закуски</option>
+                        <option value="Выпечка">Выпечка</option>
+                        <option value="Десерты">Десерты</option>
+                        <option value="Напитки">Напитки</option>
                     </select>
                     <input 
                         type="number" 

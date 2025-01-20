@@ -20,6 +20,25 @@
   line-height: 20.8px;
 }
 
+.modal__apply-btn,
+.modal__clear-btn{
+  width: 150px;
+  height: 50px;
+  border-radius: 30px;
+  border: none;
+  cursor: pointer;
+  background-color: rgba(123, 138, 111, 1);
+  color: white;
+  font-family: 'Merriweather', sans-serif;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 20.8px;
+  margin-left: 100px;
+  margin-top: 20px;
+  margin-right: 10px;
+}
+
 .AllRecipesNav__btn:first-child {
   margin-right: 80px;
 }
@@ -117,7 +136,10 @@
   color: rgba(43, 37, 32, 1);
   text-transform: uppercase;
 }
-
+.modal__btn.active {
+  background-color: rgba(123, 138, 111, 1); /* Цвет при выборе */
+  color: white; /* Цвет текста при выборе */
+}
 .modal__select {
   width: 599px;
   height: 52px;
@@ -169,51 +191,6 @@
   margin-bottom: 20px;  
 }
 
+.modal__actions{
 
-/* .AllRecipesNav {
-  margin-top: 53px;
-  margin-bottom: 65px;
-  display: flex;
-  flex-direction: column; 
-  min-height: 100vh; 
 }
-
-.recipe-list {
-  display: flex;
-  flex-wrap: wrap; 
-  justify-content: space-around; 
-  margin-top: 20px;
-}
-
-.recipe-card {
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  padding: 10px;
-  margin: 10px;
-  width: 200px; 
-  text-align: center; 
-}
-
-.AllRecipesNav__form {
-  margin: 20px 0; 
-}
-
-.AllRecipesNav__input {
-  padding: 10px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-}
-
-.AllRecipesNav__form-btn {
-  margin-left: 10px;
-  padding: 10px;
-  border-radius: 5px;
-  background-color: #4CAF50; 
-  color: white;
-  border: none;
-  cursor: pointer;
-}
-
-.AllRecipesNav__form-btn:hover {
-  background-color: #45a049; 
-} */
