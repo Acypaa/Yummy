@@ -188,7 +188,20 @@ const AllRecipesNav = ({ addRecipe, handleSearch }) => {
                     <input 
                         type="file" 
                         accept="image/*"
-                        onChange={(e) => setNewRecipe({ ...newRecipe, image: URL.createObjectURL(e.target.files[0]) })} 
+                        onChange={(e) => {
+                            const file = e.target.files[0];
+                            if (file) {
+                                const reader = new FileReader();
+
+                                reader.onloadend = () => {
+                                    // Сохраняем Base64 строку в состоянии
+                                    setNewRecipe({ ...newRecipe, image: reader.result });
+                                };
+
+                                // Читаем файл как Data URL
+                                reader.readAsDataURL(file);
+                            }
+                        }} 
                     />
                     <textarea 
                         placeholder="Ингредиенты" 
