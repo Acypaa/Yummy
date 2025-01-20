@@ -7,6 +7,7 @@ import '../styles/Profile.css';
 const UserFriends = () => {
   const { username } = useParams(); // Получаем имя пользователя из параметров маршрута
   const [userFriends, setUserFriends] = useState([]);
+  const [searchTerm, setSearchTerm] = useState(''); 
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -14,11 +15,19 @@ const UserFriends = () => {
     if (!user) {
       navigate('/');
     } else {
-      const friends = JSON.parse(localStorage.getItem('friends')) || [];
-      const userFriends = friends.filter(friend => friend.username === username);
-      setUserFriends(userFriends);
+      // const currentUsername = JSON.parse(user).username;
+      const subscriptions = JSON.parse(localStorage.getItem('subscriptions')) || {};
+      
+      // Получаем подписки для указанного пользователя
+      const userSubscriptions = subscriptions[username] || [];
+      console.log(`Подписки для ${username}:`, userSubscriptions); 
+      setUserFriends(userSubscriptions);
     }
   }, [username, navigate]);
+
+  const filteredFriends = userFriends.filter(friend =>
+    friend && friend.toLowerCase().includes(searchTerm.toLowerCase()) 
+  );
 
   return (
     <div>
@@ -41,12 +50,18 @@ const UserFriends = () => {
         </div>
         <div className="profile__right">
           <h1 className='Profile__main-heading'>Подписки</h1>
+          <button className='right__btn btn-friends'>Список подписок</button>
+          <input 
+            type="text" 
+            className='Profile__input' 
+            placeholder='Поиск подписки' 
+            onChange={(e) => setSearchTerm(e.target.value)} // Обновляем состояние поискового запроса
+          />
           <div className="friends-list">
-            {userFriends.length > 0 ? (
-              userFriends.map(friend => (
-                <div key={friend.id} className="friend-item">
-                  <h3>{friend.username}</h3>
-                  <Link to={`/profile/${friend.username}`}>Перейти к профилю</Link>
+            {filteredFriends.length > 0 ? (
+              filteredFriends.map((friend, index) => (
+                <div key={index} className="friend-item">
+                  <Link to={`/profile/${friend}`} className='friend-username'>{friend}</Link> {/* Никнейм как ссылка */}
                 </div>
               ))
             ) : (

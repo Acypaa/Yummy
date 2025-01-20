@@ -46,6 +46,8 @@ const Favorites = () => {
         </div>
         <div className="profile__right">
           <h1 className='Profile__main-heading'>Избранное</h1>
+          <button className='right__btn btn-friends'>Список избранных</button>
+          <input type="text" className='Profile__input' placeholder='Поиск избранных' />
           <div className="favorites-container">
             {favorites.length > 0 ? (
               favorites.map((recipe, index) => (

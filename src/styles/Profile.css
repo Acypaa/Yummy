@@ -137,6 +137,7 @@
   line-height: 16.9px;
   color: rgba(79, 50, 29, 1);
   text-transform: uppercase;
+  margin-bottom: 10px;
 }
 
 .Profile__input {
@@ -161,7 +162,20 @@
   margin-right: 373px;
 }
 
-.subscription-item {
+.subscription-item .subscriptions-list{
+  margin-top: 20px;
+  font-family: 'Merriweather', sans-serif;
+  font-size: 20px;
+}
+.subscriptions-list{
+  margin-top: 20px;
+  font-family: 'Merriweather', sans-serif;
+  font-size: 20px;
+}
+.favorites-container,
+.friends-list,
+.favorites-list,
+.recipes-list{
   margin-top: 20px;
   font-family: 'Merriweather', sans-serif;
   font-size: 20px;
