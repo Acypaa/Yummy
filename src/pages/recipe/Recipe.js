@@ -48,7 +48,12 @@ const Recipe = () => {
             alert('Пожалуйста, войдите в систему, чтобы добавлять рецепты в избранное.');
             return;
         }
-    
+
+        if (recipe.author === currentUser.username) {
+            alert('Вы не можете добавить свой рецепт в избранное.');
+            return;
+        }
+
         const favorites = JSON.parse(localStorage.getItem('favorites')) || {};
         const userFavorites = favorites[currentUser.username] || [];
         const isAlreadyFavorite = userFavorites.some(fav => fav.recipeId === recipe.id);
