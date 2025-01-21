@@ -33,10 +33,12 @@ const UserProfile = () => {
             alert('Пожалуйста, войдите в систему, чтобы подписаться на пользователей.');
             return;
         }
+
         if (currentUser.username === username) {
             alert('Нельзя подписаться на самого себя.');
             return;
         }
+
         const subscriptions = JSON.parse(localStorage.getItem('subscriptions')) || {};
         if (isSubscribed) {
             subscriptions[currentUser.username] = subscriptions[currentUser.username].filter(
