@@ -2,6 +2,7 @@ import React from 'react';
 import '../styles/RecipesMain.css';
 import RecipesMainCircle from './RecipesMainCircle';
 import { Link } from "react-router-dom";
+import ModalWindow from './ModalWindow.js';
 
 const RecipesMain = () => {
   return (
