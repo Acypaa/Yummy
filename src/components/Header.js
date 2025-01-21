@@ -2,16 +2,15 @@ import React, { useState, useEffect } from 'react';
 import '../styles/Header.css'
 import { Link, useNavigate } from "react-router-dom";
 import "../img/HeaderLogo.svg";
-// import Modal from 'react-modal';
 import ModalWindow from './ModalWindow.js';
 import { PROFILE_ROUTE } from '../utils/consts';
 
-const Header = () => {
-  const [modalIsOpen, setModalIsOpen] = useState(false); // пропсы проброшены
-  const [modalActiveTab, setModalActiveTab] = useState('login'); // пропсы проброшены
+const Header = ({modalIsOpen, setModalIsOpen, modalActiveTab, setModalActiveTab, modalError, setModalError, openModal}) => {
+  // const [modalIsOpen, setModalIsOpen] = useState(false); // // вынес в родительский компонент
+  // const [modalActiveTab, setModalActiveTab] = useState('login'); // // вынес в родительский компонент
   const [modalIsLoggedIn, setModalIsLoggedIn] = useState(false); //  пропсы проброшены
   const [modalCurrentUser, setModalCurrentUser] = useState(null); // пропсы проброшены, возможно потом переместить в ModalWindow.js (но это не точно т.к. checkAuth вероятно нужно оставить здесь или нет я не знаю. Нужно потом проверить.)
-  const [modalError, setModalError] = useState(''); // пропсы проброшены
+  // const [modalError, setModalError] = useState(''); // // вынес в родительский компонент
   const modalNavigate = useNavigate(); // пропс проброшен, возможно потом переместить в ModalWindow.js
 
   // Форма входа
@@ -52,11 +51,11 @@ const Header = () => {
     };
   }, []);
 
-  const openModal = (tab = 'login') => { // потом вынести в родительский компонент
-    setModalActiveTab(tab);
-    setModalIsOpen(true);
-    setModalError('');
-  };
+  // const openModal = (tab = 'login') => { // вынес в родительский компонент
+  //   setModalActiveTab(tab);
+  //   setModalIsOpen(true);
+  //   setModalError('');
+  // };
 
   return (
     <div>

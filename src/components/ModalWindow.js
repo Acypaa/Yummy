@@ -6,8 +6,8 @@ import { PROFILE_ROUTE } from '../utils/consts';
 const ModalWindow = ({isOpen, setIsOpen, error, setError, loginForm, setLoginForm, registerForm, setRegisterForm, activeTab, setActiveTab, isLoggedIn, setIsLoggedIn, currentUser, setCurrentUser, navigate}) => {
 
   const closeModal = () => {
-    setIsOpen(false); //
-    setError(''); //
+    setIsOpen(false);
+    setError(''); 
     setLoginForm({ username: '', password: '' });
     setRegisterForm({ username: '', password: '', confirmPassword: '' });
   };
