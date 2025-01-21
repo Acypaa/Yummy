@@ -58,14 +58,17 @@ const UserFriends = () => {
             onChange={(e) => setSearchTerm(e.target.value)} // Обновляем состояние поискового запроса
           />
           <div className="friends-list">
-            {filteredFriends.length > 0 ? (
-              filteredFriends.map((friend, index) => (
-                <div key={index} className="friend-item">
-                  <Link to={`/profile/${friend}`} className='friend-username'>{friend}</Link> {/* Никнейм как ссылка */}
-                </div>
-              ))
-            ) : (
+            {userFriends.length === 0 ? (
               <p>У этого пользователя нет подписок.</p>
+              ) : (filteredFriends.length === 0 ? (
+                <p>Подписки по поисковому запросу не найдены.</p>
+                ) : (
+                filteredFriends.map((friend, index) => (
+                  <div key={index} className="friend-item">
+                    <Link to={`/profile/${friend}`} className='friend-username'>{friend}</Link> {/* Никнейм как ссылка */}
+                  </div>
+                  ))
+                )  
             )}
           </div>
         </div>
