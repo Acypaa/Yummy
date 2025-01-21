@@ -44,9 +44,9 @@ const Profile = () => {
         </div>
         <div className="profile__right">
           <h1 className='Profile__main-heading'>Профиль</h1>
-          <button className='right__btn'>Публикации</button>
+          {/* <button className='right__btn'>Публикации</button>
           <button className='right__btn'>Избранное</button>
-          <input type="text" className='Profile__input' placeholder='Поиск рецепта' />
+          <input type="text" className='Profile__input' placeholder='Поиск рецепта' /> */}
         </div>
       </div>
       <Footer />

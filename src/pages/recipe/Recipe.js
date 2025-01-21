@@ -31,6 +31,7 @@ const Recipe = () => {
         alert('Рецепт был успешно удален.');
         navigate('/allrecipes'); 
     };
+
     const handleShare = () => {
         const shareUrl = window.location.href; // Получаем текущий URL страницы
         navigator.clipboard.writeText(shareUrl) // Копируем URL в буфер обмена
@@ -41,33 +42,26 @@ const Recipe = () => {
                 console.error('Ошибка при копировании: ', err);
             });
     };
+
     const handleAddToFavorites = () => {
-        console.log('Текущий рецепт:', recipe); 
         const currentUser = JSON.parse(localStorage.getItem('currentUser'));
-        if (!currentUser) {
-            alert('Пожалуйста, войдите в систему, чтобы добавлять рецепты в избранное.');
+        const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+        const recipeInFavorites = favorites.find(fav => fav.id === recipe.id);
+        if (recipe.author === currentUser.username) {
+            alert('Вы не можете добавить свой рецепт в избранное.');
             return;
         }
-    
-        const favorites = JSON.parse(localStorage.getItem('favorites')) || {};
-        const userFavorites = favorites[currentUser.username] || [];
-        const isAlreadyFavorite = userFavorites.some(fav => fav.recipeId === recipe.id);
-    
-        if (isAlreadyFavorite) {
-            // Удаляем рецепт из избранного
-            const updatedFavorites = userFavorites.filter(fav => fav.recipeId !== recipe.id);
-            favorites[currentUser.username] = updatedFavorites;
+        if (!recipeInFavorites) {
+            favorites.push({ ...recipe, username: JSON.parse(localStorage.getItem('currentUser')).username });
             localStorage.setItem('favorites', JSON.stringify(favorites));
-            alert('Рецепт удален из избранного.');
+            alert('Рецепт добавлен в избранное!');
         } else {
-            // Добавляем рецепт в избранное
-            userFavorites.push({ recipeId: recipe.id, recipeName: recipe.name });
-            favorites[currentUser.username] = userFavorites;
-            localStorage.setItem('favorites', JSON.stringify(favorites));
-            alert('Рецепт добавлен в избранное.');
+            const updatedFavorites = favorites.filter(fav => fav.id !== recipe.id);
+            localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
+            alert('Рецепт удален из избранного!');
         }
     
-        console.log('Текущие избранные рецепты:', favorites);
+        console.log(favorites); // Выводим все избранные рецепты после добавления/удаления
     };
     return (
         <div className='Recipe'>
@@ -83,7 +77,7 @@ const Recipe = () => {
                         В избранное <img src="../img/Recipe/fav.png" alt="" />
                     </button>
                     <button className='top__right-btn' onClick={handleShare}>Поделиться <img src="../img/Recipe/repost.png" alt="" /></button>
-                    <button className='top__right-btn'>Комментарии <img src="../img/Recipe/comment.png" alt="" /></button>
+                    {/* <button className='top__right-btn'>Комментарии <img src="../img/Recipe/comment.png" alt="" /></button> */}
                     <button className='top__right-btn' onClick={() => handleDelete(recipe.id)}>Удалить</button> 
                 </div> 
             </div>

@@ -7,18 +7,27 @@ import '../styles/Profile.css';
 const UserFavorites = () => {
   const { username } = useParams(); // Получаем имя пользователя из параметров маршрута
   const [userFavorites, setUserFavorites] = useState([]);
+  const [searchTerm, setSearchTerm] = useState(''); // Состояние для хранения поискового запроса
   const navigate = useNavigate();
 
   useEffect(() => {
     const user = localStorage.getItem('currentUser');
     if (!user) {
-      navigate('/');
+        navigate('/');
     } else {
-      const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
-      const userFavorites = favorites.filter(favorite => favorite.username === username);
-      setUserFavorites(userFavorites);
+        const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+        const userFavorites = favorites.filter(favorite => favorite.username === username);
+        setUserFavorites(userFavorites);
+
+        console.log(favorites); // Все избранные рецепты
+        console.log(userFavorites); // Избранные рецепты конкретного пользователя
     }
-  }, [username, navigate]);
+}, [username, navigate]);
+
+  // Фильтрация избранных рецептов на основе поискового запроса
+  const filteredFavorites = userFavorites.filter(favorite =>
+    favorite.recipeName && favorite.recipeName.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   return (
     <div>
@@ -40,11 +49,16 @@ const UserFavorites = () => {
         <div className="profile__right">
           <h1 className='Profile__main-heading'>Избранное</h1>
           <button className='right__btn btn-friends'>Список избранных</button>
-          <input type="text" className='Profile__input' placeholder='Поиск избранных' />
+          <input 
+            type="text" 
+            className='Profile__input' 
+            placeholder='Поиск избранных' 
+            onChange={(e) => setSearchTerm(e.target.value)} 
+          />
           <div className="favorites-list">
-            {userFavorites.length > 0 ? (
-              userFavorites.map(favorite => (
-                <div key={favorite.id} className="favorite-item">
+            {filteredFavorites.length > 0 ? (
+              filteredFavorites.map(favorite => (
+                <div key={favorite.recipeId} className="favorite-item">
                   <h3>{favorite.recipeName}</h3>
                   <Link to={`/recipe/${favorite.recipeId}`}>Смотреть рецепт</Link>
                 </div>
