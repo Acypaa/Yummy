@@ -1,9 +1,51 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Modal from 'react-modal';
 import { PROFILE_ROUTE } from '../utils/consts';
+import { useNavigate } from "react-router-dom";
 
 
-const ModalWindow = ({isOpen, setIsOpen, error, setError, loginForm, setLoginForm, registerForm, setRegisterForm, activeTab, setActiveTab, isLoggedIn, setIsLoggedIn, currentUser, setCurrentUser, navigate}) => {
+const ModalWindow = ({isOpen, setIsOpen, error, setError, activeTab, setActiveTab, isLoggedIn, setIsLoggedIn}) => {
+
+  const [currentUser, setCurrentUser] = useState(null);
+  const navigate = useNavigate();
+
+  // Форма входа
+  const [loginForm, setLoginForm] = useState({
+    username: '',
+    password: ''
+  });
+
+  // Форма регистрации
+  const [registerForm, setRegisterForm] = useState({
+    username: '',
+    password: '',
+    confirmPassword: ''
+  });
+
+  const checkAuth = () => {
+    const savedUser = localStorage.getItem('currentUser');
+    if (savedUser) {
+      setIsLoggedIn(true);
+      setCurrentUser(JSON.parse(savedUser));
+    } else {
+      setIsLoggedIn(false);
+      setCurrentUser(null);
+    }
+  };
+
+  useEffect(() => {
+    checkAuth();
+    
+    const handleStorageChange = () => {
+      checkAuth();
+    };
+    
+    window.addEventListener('storage', handleStorageChange);
+    
+    return () => {
+      window.removeEventListener('storage', handleStorageChange);
+    };
+  }, []);
 
   const closeModal = () => {
     setIsOpen(false);
