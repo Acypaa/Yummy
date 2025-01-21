@@ -5,132 +5,131 @@
   }
 
 .Profile {
-    width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    flex-direction: row;
-    flex-grow: 1; /* Этот блок растягивается по высоте */
-    height: auto;
-  }
+  width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  flex-grow: 1;
+  height: auto;
+}
   
-  .Profile__left {
-    margin-top: 100px;
-    width: 303px;
-    min-height: 462px;
-    margin-bottom: 120px;
-    border-radius: 50px;
-    background-color: rgba(210, 210, 182, 1);
-    display: flex;
-    flex-direction: column;
-    padding: 50px 46px 50px 35px;
-  }
+.Profile__left {
+  margin-top: 100px;
+  width: 303px;
+  min-height: 462px;
+  margin-bottom: 120px;
+  border-radius: 50px;
+  background-color: rgba(210, 210, 182, 1);
+  display: flex;
+  flex-direction: column;
+  padding: 50px 46px 50px 35px;
+}
+
   
+.Profile__heading {
+  text-align: center;
+  font-family: 'Merriweather', sans-serif;
+  font-weight: 900;
+  font-size: 15px;
+  line-height: 19.5px;
+  text-transform: uppercase;
+  border-bottom: 1px solid rgba(43, 37, 32, 1);
+  color: rgba(43, 37, 32, 1);
+  padding-bottom: 24px;
+}
+
+.Profile__line {
+  font-family: 'Merriweather', sans-serif;
+  font-weight: 900;
+  font-size: 15px;
+  line-height: 19.5px;
+  color: rgba(79, 50, 29, 1);
+  text-transform: uppercase;
+  border-bottom: 1px solid rgba(43, 37, 32, 1);
+  padding-bottom: 24px;
+  margin-top: 23px;
+  transition: 200ms;
+  cursor: pointer;
+}
+
+.Profile__line:hover {
+  padding-left: 20px;
+}
+
+.Profile a {
+  text-decoration: none;
+}
+
+.Profile__btn {
+  margin-top: 80px;
+  width: 223px;
+  height: 44px;
+  cursor: pointer;
+  background-color: rgba(123, 138, 111, 1);
+  color: rgba(248, 248, 248, 1);
+  border: none;
+  font-family: 'Merriweather', sans-serif;
+  font-weight: 900;
+  font-size: 15px;
+  line-height: 19.5px;
+  text-transform: uppercase;
+}
+
+.profile__right {
+  margin-top: 100px;
+  width: 794px;
+  height: auto; 
+}
+
+.Profile__main-heading {
+  font-family: 'Merriweather', sans-serif;
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 31.2px;
+  text-transform: uppercase;
+  margin-bottom: 36px;
+}
+
+.right__btn {
+  width: 205px;
+  height: 52px;
+  margin-right: 78px;
+  border-radius: 151.5px;
+  border: none;
+  background-color: rgba(210, 210, 182, 1);
+  cursor: pointer;
+  font-family: 'Merriweather', sans-serif;
+  font-weight: 900;
+  font-size: 13px;
+  line-height: 16.9px;
+  color: rgba(79, 50, 29, 1);
+  text-transform: uppercase;
+}
+
+.Profile__input {
+  width: 216px;
+  height: 52px;
+  background-color: rgba(228, 228, 196, 1);
+  border: 1px solid rgba(142, 76, 46, 1);
+  color: rgba(142, 76, 46, 1);
+}
+
+.Profile__input::placeholder {
+  color: rgba(142, 76, 46, 1);
+  text-transform: uppercase;
+  font-family: 'Merriweather';
+  font-weight: 900;
+  font-size: 12px;
+  line-height: 15.6px;
+  padding-left: 20px;
+}
   
-  .Profile__heading {
-    text-align: center;
-    font-family: 'Merriweather', sans-serif;
-    font-weight: 900;
-    font-size: 15px;
-    line-height: 19.5px;
-    text-transform: uppercase;
-    border-bottom: 1px solid rgba(43, 37, 32, 1);
-    color: rgba(43, 37, 32, 1);
-    padding-bottom: 24px;
-  }
-  
-  .Profile__line {
-    font-family: 'Merriweather', sans-serif;
-    font-weight: 900;
-    font-size: 15px;
-    line-height: 19.5px;
-    color: rgba(79, 50, 29, 1);
-    text-transform: uppercase;
-    border-bottom: 1px solid rgba(43, 37, 32, 1);
-    padding-bottom: 24px;
-    margin-top: 23px;
-    transition: 200ms;
-    cursor: pointer;
-  }
-  
-  .Profile__line:hover {
-    padding-left: 20px;
-  }
-  
-  .Profile a {
-    text-decoration: none;
-  }
-  
-  .Profile__btn {
-    margin-top: 80px;
-    width: 223px;
-    height: 44px;
-    cursor: pointer;
-    background-color: rgba(123, 138, 111, 1);
-    color: rgba(248, 248, 248, 1);
-    border: none;
-    font-family: 'Merriweather', sans-serif;
-    font-weight: 900;
-    font-size: 15px;
-    line-height: 19.5px;
-    text-transform: uppercase;
-  }
-  
-  .profile__right {
-    margin-top: 100px;
-    width: 794px;
-    height: auto;
-  }
-  
-  .Profile__main-heading {
-    font-family: 'Merriweather', sans-serif;
-    font-weight: 900;
-    font-size: 24px;
-    line-height: 31.2px;
-    text-transform: uppercase;
-    margin-bottom: 36px;
-  }
-  
-  .right__btn {
-    width: 205px;
-    height: 52px;
-    margin-right: 78px;
-    border-radius: 151.5px;
-    border: none;
-    background-color: rgba(210, 210, 182, 1);
-    cursor: pointer;
-    font-family: 'Merriweather', sans-serif;
-    font-weight: 900;
-    font-size: 13px;
-    line-height: 16.9px;
-    color: rgba(79, 50, 29, 1);
-    text-transform: uppercase;
-  }
-  
-  .Profile__input {
-    width: 216px;
-    height: 52px;
-    background-color: rgba(228, 228, 196, 1);
-    border: 1px solid rgba(142, 76, 46, 1);
-    color: rgba(142, 76, 46, 1);
-  }
-  
-  .Profile__input::placeholder {
-    color: rgba(142, 76, 46, 1);
-    text-transform: uppercase;
-    font-family: 'Merriweather';
-    font-weight: 900;
-    font-size: 12px;
-    line-height: 15.6px;
-    padding-left: 20px;
-  }
-  
-  .btn-friends {
+.btn-friends {
     margin-right: 373px;
-  }
+}
   
-  /* Стили для карточек публикаций */
-  .PublicatesCard {
+.PublicatesCard {
     width: 338px;
     height: 246px;
     position: relative;
@@ -139,42 +138,41 @@
     cursor: pointer;
     overflow: hidden;
     transition: transform 0.3s ease;
-    margin-bottom: 20px; /* Отступ снизу для карточек */
-  }
-  
-  .PublicatesCard:hover {
-    transform: scale(1.05);
-  }
-  
-  .PublicatesCard__img {
-    width: 338px;
-    height: 198px;
-    position: absolute;
-    top: 0;
-    left: 0; 
-  }
-  
-  .PublicatesCard__title {
-    width: 338px;
-    height: 48px;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    color: white;
-    font-family: 'Merriweather', sans-serif;
-    text-transform: uppercase;
-    font-weight: 900;
-    font-size: 16px;
-    line-height: 20.8px;
-    padding-top: 13px;
-    text-align: center;
-  }
-  
-  /* Стили для контейнера карточек */
-  .recipes-list {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between; /* Выравнивание карточек по горизонтали */
-    gap: 20px; /* Отступ между карточками */
-    margin-top: 20px; /* Отступ сверху для контейнера */
-  }
+    margin-bottom: 20px;
+}
+
+.PublicatesCard:hover {
+  transform: scale(1.05);
+}
+
+.PublicatesCard__img {
+  width: 338px;
+  height: 198px;
+  position: absolute;
+  top: 0;
+  left: 0; 
+}
+
+.PublicatesCard__title {
+  width: 338px;
+  height: 48px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  color: white;
+  font-family: 'Merriweather', sans-serif;
+  text-transform: uppercase;
+  font-weight: 900;
+  font-size: 16px;
+  line-height: 20.8px;
+  padding-top: 13px;
+  text-align: center;
+}
+
+.recipes-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between; 
+  gap: 20px; 
+  margin-top: 20px; 
+}
