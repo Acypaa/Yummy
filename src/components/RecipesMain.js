@@ -39,7 +39,7 @@ const RecipesMain = ({openModal}) => {
       </div>
       <div className="SignUp">
         <div className="SignUp__top">
-          <button onClick={() => openModal('register')} className='SignUp__top-link Header_btn'>Зарегистрируйтесь</button>,<br/>
+          <button className='SignUp__top-link' onClick={() => openModal('register')} >Зарегистрируйтесь</button>,<br/>
           чтобы начать добавлять<br/>
           рецепты
         </div>
