@@ -2,8 +2,9 @@ import React from 'react';
 import '../styles/RecipesMain.css';
 import RecipesMainCircle from './RecipesMainCircle';
 import { Link } from "react-router-dom";
+import ModalWindow from './ModalWindow.js';
 
-const RecipesMain = () => {
+const RecipesMain = ({openModal}) => {
   return (
     <div className='RecipesMain'>
       <div className="Circle">
@@ -38,7 +39,7 @@ const RecipesMain = () => {
       </div>
       <div className="SignUp">
         <div className="SignUp__top">
-          <a href="#" className='SignUp__top-link'>Зарегистрируйтесь</a>,<br/>
+          <button className='SignUp__top-link' onClick={() => openModal('register')} >Зарегистрируйтесь</button>,<br/>
           чтобы начать добавлять<br/>
           рецепты
         </div>
