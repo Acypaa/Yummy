@@ -47,17 +47,19 @@ const UserPublicates = () => {
             onChange={(e) => setSearchTerm(e.target.value)} // Обновляем состояние поискового запроса
           />
           <div className="recipes-list">
-            {filteredRecipes.length > 0 ? (
-              filteredRecipes.map(recipe => (
-                <div key={recipe.id} className="PublicatesCard">
-                  <Link to={`/recipe/${recipe.id}`}>
-                    <img src={recipe.img} alt={recipe.name} className='PublicatesCard__img' />
-                    <h3 className='PublicatesCard__title'>{recipe.name}</h3>
-                  </Link>
-                </div>
-              ))
-            ) : (
+            {userRecipes.length === 0 ? (
               <p>У этого пользователя нет публикаций.</p>
+              ) : (filteredRecipes.length === 0 ? (
+                <p>Рецепт с таким названием не найден у данного пользователя.</p>
+                ) : (filteredRecipes.map(recipe => (
+                  <div key={recipe.id} className="PublicatesCard">
+                    <Link to={`/recipe/${recipe.id}`}>
+                      <img src={recipe.img} alt={recipe.name} className='PublicatesCard__img' />
+                      <h3 className='PublicatesCard__title'>{recipe.name}</h3>
+                    </Link>
+                  </div>
+                  ))
+                )
             )}
           </div>
         </div>
