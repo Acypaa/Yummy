@@ -48,14 +48,18 @@
   height: 52px;
   margin-left: 250px;
 }
+.search-container,
 .button-container {
   display: flex;
+  height: 50px;
   justify-content: space-between; /* Распределяет кнопки по краям */
   align-items: center; /* Центрирует элементы по вертикали */
   margin: 20px 0; /* Отступы сверху и снизу */
 }
 
-
+.search-container{
+  height: 50px;
+}
 .AllRecipesNav__input {
   margin: 100px;
   width: 340px;
