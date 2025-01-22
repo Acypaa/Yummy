@@ -59,24 +59,33 @@ const Recipe = () => {
     };
 
     const handleAddToFavorites = () => {
-        const currentUser = JSON.parse(localStorage.getItem('currentUser'));
-        const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
-        const recipeInFavorites = favorites.find(fav => fav.id === recipe.id);
+        if (!currentUser) {
+            alert('Пожалуйста, войдите в систему, чтобы добавлять рецепты в избранное.');
+            return;
+        }
+
         if (recipe.author === currentUser.username) {
             alert('Вы не можете добавить свой рецепт в избранное.');
             return;
         }
-        if (!recipeInFavorites) {
-            favorites.push({ ...recipe, username: JSON.parse(localStorage.getItem('currentUser')).username });
-            localStorage.setItem('favorites', JSON.stringify(favorites));
-            alert('Рецепт добавлен в избранное!');
+
+        const updatedFavorites = { ...favorites };
+        const userFavorites = updatedFavorites[currentUser.username] || [];
+
+        if (isFavorite) {
+            // Удаляем рецепт из избранного
+            updatedFavorites[currentUser.username] = userFavorites.filter(fav => fav.recipeId !== recipe.id);
+            setIsFavorite(false);
+            alert('Рецепт удален из избранного.');
         } else {
-            const updatedFavorites = favorites.filter(fav => fav.id !== recipe.id);
-            localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
-            alert('Рецепт удален из избранного!');
+            // Добавляем рецепт в избранное
+            userFavorites.push({ recipeId: recipe.id, recipeName: recipe.name });
+            updatedFavorites[currentUser.username] = userFavorites;
+            setIsFavorite(true);
+            alert('Рецепт добавлен в избранное.');
         }
-    
-        console.log(favorites); // Выводим все избранные рецепты после добавления/удаления
+
+        localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
     };
 
     return (
