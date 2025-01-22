@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import '../../styles/Recipe.css';
-import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 
 const Recipe = () => {
@@ -91,7 +90,6 @@ const Recipe = () => {
 
     return (
         <div className='Recipe'>
-            <Header img={recipe.logo} />
             <h1 className='Recipe__title'>{recipe.name}</h1>
             <div className="Recipe__top">
                 <img src={recipe.img} alt="" className='Recipe__top-img' />

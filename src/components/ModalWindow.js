@@ -4,7 +4,7 @@ import { PROFILE_ROUTE } from '../utils/consts';
 import { useNavigate } from "react-router-dom";
 
 
-const ModalWindow = ({isOpen, setIsOpen, error, setError, activeTab, setActiveTab, isLoggedIn, setIsLoggedIn}) => {
+const ModalWindow = ({isOpen, setIsOpen, error, setError, activeTab, setActiveTab, isLoggedIn, setIsLoggedIn}) => { // возможно убрать isLoggedIn
 
   const [currentUser, setCurrentUser] = useState(null);
   const navigate = useNavigate();
