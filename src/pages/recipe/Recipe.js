@@ -1,5 +1,4 @@
-
-import React from 'react';
+import React, { useState } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import '../../styles/Recipe.css';
 import Footer from '../../components/Footer';
@@ -7,12 +6,29 @@ import Footer from '../../components/Footer';
 const Recipe = () => {
     const { id } = useParams();
     const navigate = useNavigate();
-    const recipes = JSON.parse(localStorage.getItem('recipes')) || []; 
+    const recipes = JSON.parse(localStorage.getItem('recipes')) || [];
 
-    const recipe = recipes.find(r => r.id === parseInt(id)); 
+    // Найти рецепт по ID
+    const recipe = recipes.find(r => r.id === parseInt(id));
 
+    const [isFavorite, setIsFavorite] = useState(false);
+
+    // Если рецепт не найден, показываем сообщение
     if (!recipe) {
-        return <div>Рецепт не найден</div>; 
+        return <div>Рецепт не найден</div>;
+    }
+
+    // Получаем текущего пользователя
+    const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+
+    // Проверка избранного при рендере
+    const favorites = JSON.parse(localStorage.getItem('favorites')) || {};
+    const userFavorites = favorites[currentUser?.username] || [];
+    const isAlreadyFavorite = userFavorites.some(fav => fav.recipeId === recipe.id);
+
+    // Обновляем состояние избранного синхронно при первом рендере
+    if (isFavorite !== isAlreadyFavorite) {
+        setIsFavorite(isAlreadyFavorite);
     }
 
     const handleDelete = (id) => {
@@ -62,17 +78,22 @@ const Recipe = () => {
     
         console.log(favorites); // Выводим все избранные рецепты после добавления/удаления
     };
+
     return (
         <div className='Recipe'>
             <h1 className='Recipe__title'>{recipe.name}</h1>
             <div className="Recipe__top">
-            <img src={recipe.img} alt="" className='Recipe__top-img' />
+                <img src={recipe.img} alt="" className='Recipe__top-img' />
                 <div className="top__right">
                     <div className='top__right-author'>
                         Автор: <Link to={`/profile/${recipe.author}`}>{recipe.author}</Link>
                     </div>
-                    <button className='top__right-btn' onClick={handleAddToFavorites}>
-                        В избранное <img src="../img/Recipe/fav.png" alt="" />
+                    <button 
+                        className='top__right-btn' 
+                        onClick={handleAddToFavorites}
+                    >
+                        {isFavorite ? 'Удалить из избранного' : 'В избранное'}
+                        <img src="../img/Recipe/fav.png" alt="" />
                     </button>
                     <button className='top__right-btn' onClick={handleShare}>Поделиться <img src="../img/Recipe/repost.png" alt="" /></button>
                     {/* <button className='top__right-btn'>Комментарии <img src="../img/Recipe/comment.png" alt="" /></button> */}
