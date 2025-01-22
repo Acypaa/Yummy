@@ -2,7 +2,6 @@ import React, { useState, useEffect, useMemo } from 'react';
 import '../../styles/AllRecipes.css';
 import AllRecipesNav from '../../components/AllRecipesNav';  
 import AllRecipesCard from '../../components/AllRecipesCard';  
-import Header from '../../components/Header'; 
 import Footer from '../../components/Footer'; 
 
 
@@ -57,7 +56,6 @@ const AllRecipes = () => {
 
     return (
         <div className="all-recipes-container">
-            <Header /> 
             <AllRecipesNav 
                 addRecipe={addRecipe} 
                 handleSearch={handleSearch} 

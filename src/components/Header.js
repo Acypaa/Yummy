@@ -5,8 +5,7 @@ import "../img/HeaderLogo.svg";
 import ModalWindow from './ModalWindow.js';
 import { PROFILE_ROUTE } from '../utils/consts';
 
-const Header = ({modalIsOpen, setModalIsOpen, modalActiveTab, setModalActiveTab, modalError, setModalError, openModal}) => {
-  const [modalIsLoggedIn, setModalIsLoggedIn] = useState(false);
+const Header = ({modalIsOpen, setModalIsOpen, modalActiveTab, setModalActiveTab, modalError, setModalError, openModal, modalIsLoggedIn, setModalIsLoggedIn}) => {
 
   return (
     <div>
@@ -19,10 +18,10 @@ const Header = ({modalIsOpen, setModalIsOpen, modalActiveTab, setModalActiveTab,
             <li>
               {modalIsLoggedIn ? (
                 <Link to={PROFILE_ROUTE} className='Header__link'>Профиль</Link>
-              ) : (
-                <button className='Header__link Header__btn' onClick={() => openModal('login')}>
-                  Войти
-                </button>
+                ) : (
+                  <button className='Header__link Header__btn' onClick={() => openModal('login')}>
+                    Войти
+                  </button>
               )}
             </li>
           </ul>

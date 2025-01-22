@@ -1,4 +1,3 @@
-import Header from '../components/Header';
 import Footer from '../components/Footer';
 import React, { useEffect, useState } from 'react';
 import { Link, useParams } from "react-router-dom";
@@ -22,7 +21,6 @@ const UserPublicates = () => {
 
   return (
     <div className="container"> 
-      <Header />
       <div className="Profile">
         <div className="Profile__left">
           <h2 className='Profile__heading'>{username}</h2>

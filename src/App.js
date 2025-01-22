@@ -12,12 +12,33 @@ import UserPublicates from './components/UserPublicates';
 import UserFriends from './components/UserFriends';
 import UserFavorites from './components/UserFavorites';
 import './styles/App.css'; 
+import Header from './components/Header';
+import { useState } from 'react';
+
 
 const App = () => {
+    const [headerModalIsOpen, setHeaderModalIsOpen] = useState(false);
+    const [headerModalActiveTab, setHeaderModalActiveTab] = useState('login');
+    const [headerModalError, setHeaderModalError] = useState('');
+    const [headerModalIsLoggedIn, setHeaderModalIsLoggedIn] = useState(false);
+
+
+    const openHeaderModal = (tab = 'login') => {
+        setHeaderModalActiveTab(tab);
+        setHeaderModalIsOpen(true);
+        setHeaderModalError('');
+    };
+
     return (
         <BrowserRouter>
+            <Header modalIsOpen={headerModalIsOpen} setModalIsOpen={setHeaderModalIsOpen}
+                    modalActiveTab={headerModalActiveTab} setModalActiveTab={setHeaderModalActiveTab}
+                    modalError={headerModalError} setModalError={setHeaderModalError}
+                    modalIsLoggedIn={headerModalIsLoggedIn} setModalIsLoggedIn={setHeaderModalIsLoggedIn}
+                    openModal={openHeaderModal}
+            />
             <Routes>
-                <Route path="/" element={<Main />} /> 
+                <Route path="/" element={<Main modalIsLoggedIn={headerModalIsLoggedIn} setModalIsLoggedIn={setHeaderModalIsLoggedIn} openHeaderModal={openHeaderModal}/>} /> 
                 <Route path="/recipes" element={<AllRecipesNav />} /> 
                 <Route path="/allrecipes" element={<AllRecipes />} /> 
                 <Route path="/recipe/:id" element={<Recipe />} /> 

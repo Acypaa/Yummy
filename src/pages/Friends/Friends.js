@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'; 
-import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import '../../styles/Profile.css'; 
 import { Link, useNavigate } from 'react-router-dom';
@@ -37,7 +36,6 @@ const Friends = () => {
 
     return (
         <div>
-            <Header />
             <div className="Profile">
                 <div className="Profile__left">
                     <h2 className='Profile__heading'>{username}</h2>
