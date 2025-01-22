@@ -5,26 +5,37 @@ import '../styles/Profile.css';
 
 const UserFavorites = () => {
   const { username } = useParams(); // Получаем имя пользователя из параметров маршрута
-  const [userFavorites, setUserFavorites] = useState([]);
+  const [favorites, setFavorites] = useState([]);
   const [searchTerm, setSearchTerm] = useState(''); // Состояние для хранения поискового запроса
   const navigate = useNavigate();
+  const recipes = JSON.parse(localStorage.getItem('recipes')) || [];
+
+  // Найти рецепт по ID
+  function findRecipe(id) {
+    return recipes.find(r => r.id === parseInt(id));
+  }
+
 
   useEffect(() => {
     const user = localStorage.getItem('currentUser');
     if (!user) {
         navigate('/');
     } else {
-        const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
-        const userFavorites = favorites.filter(favorite => favorite.username === username);
-        setUserFavorites(userFavorites);
+        const favoritesFromStorage = JSON.parse(localStorage.getItem('favorites')) || {}; // Возвращает избранное в виде объекта, в котором есть пары ключ-значение
+        const userFavorites = favoritesFromStorage[username] || [];
+        setFavorites(userFavorites);
 
-        console.log(favorites); // Все избранные рецепты
-        console.log(userFavorites); // Избранные рецепты конкретного пользователя
+        // console.log("\\/--favoritesFromStorage--\\/");
+        // console.log(favoritesFromStorage); // Все избранные рецепты
+        // console.log("\\/--username--\\\/");
+        // console.log(username); 
+        // console.log("\\/--userFavorites--\\/");
+        // console.log(userFavorites); // Избранные рецепты конкретного пользователя
     }
-}, [username, navigate]);
+  }, [username, navigate]);
 
-  // Фильтрация избранных рецептов на основе поискового запроса
-  const filteredFavorites = userFavorites.filter(favorite =>
+  //Фильтрация избранных рецептов на основе поискового запроса
+  const filteredFavorites = favorites.filter(favorite =>
     favorite.recipeName && favorite.recipeName.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
@@ -53,16 +64,21 @@ const UserFavorites = () => {
             placeholder='Поиск избранных' 
             onChange={(e) => setSearchTerm(e.target.value)} 
           />
-          <div className="favorites-list">
-            {filteredFavorites.length > 0 ? (
-              filteredFavorites.map(favorite => (
-                <div key={favorite.recipeId} className="favorite-item">
-                  <h3>{favorite.recipeName}</h3>
-                  <Link to={`/recipe/${favorite.recipeId}`}>Смотреть рецепт</Link>
-                </div>
-              ))
-            ) : (
-              <p>У этого пользователя нет избранных рецептов.</p>
+          <div className="recipes-list">
+            {favorites.length === 0 ? (
+              <p>Нет избранных рецептов.</p>
+              ) : (filteredFavorites.length === 0 ? (
+                <p>Избранные рецепты по поисковому запросу не найдены.</p>
+                ) : (
+                  filteredFavorites.map((favRecipe) => (
+                    <div key={favRecipe.recipeId} className="PublicatesCard">
+                      <Link to={`/recipe/${favRecipe.recipeId}`}>
+                        <img src={findRecipe(favRecipe.recipeId).image} alt={favRecipe.recipeName} className='PublicatesCard__img' />
+                        <h3 className='PublicatesCard__title'>{favRecipe.recipeName}</h3>
+                      </Link>
+                    </div>
+                  ))
+                )
             )}
           </div>
         </div>

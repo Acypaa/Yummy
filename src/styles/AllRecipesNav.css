@@ -57,6 +57,7 @@
 
 
 .AllRecipesNav__input {
+  margin: 100px;
   width: 340px;
   height: 52px;
   margin-left: 0;
@@ -121,6 +122,7 @@
   flex-wrap: wrap;
 }
 
+
 .modal__btn {
   padding: 11px 27px 11px 27px;
   margin-right: 40px;
@@ -136,10 +138,12 @@
   color: rgba(43, 37, 32, 1);
   text-transform: uppercase;
 }
+
 .modal__btn.active {
   background-color: rgba(123, 138, 111, 1); /* Цвет при выборе */
   color: white; /* Цвет текста при выборе */
 }
+
 .modal__select {
   width: 599px;
   height: 52px;

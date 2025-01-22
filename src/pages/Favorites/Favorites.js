@@ -8,23 +8,31 @@ const Favorites = () => {
   const navigate = useNavigate();
   const [username, setUsername] = useState('');
   const [favorites, setFavorites] = useState([]);
+  const recipes = JSON.parse(localStorage.getItem('recipes')) || [];
   const [searchTerm, setSearchTerm] = useState(''); 
+
+  // Найти рецепт по ID
+  function findRecipe(id) {
+    return recipes.find(r => r.id === parseInt(id));
+  }
+
 
   useEffect(() => {
     const user = localStorage.getItem('currentUser');
     if (!user) {
       navigate('/');
     } else {
-      const favoritesFromStorage = JSON.parse(localStorage.getItem('favorites')) || [];
-      setFavorites(favoritesFromStorage); 
-
       const userData = JSON.parse(user);
       setUsername(userData.username); 
+
+      const favoritesFromStorage = JSON.parse(localStorage.getItem('favorites')) || {};
+      const userFavorites = favoritesFromStorage[JSON.parse(user).username] || [];
+      setFavorites(userFavorites);
     }
   }, [navigate]);
 
-  const filteredFavorites = favorites.filter(recipe =>
-    recipe.name && recipe.name.toLowerCase().includes(searchTerm.toLowerCase())
+  const filteredFavorites = favorites.filter(favRecipe =>
+    favRecipe.recipeName && favRecipe.recipeName.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   const handleLogout = () => {
@@ -57,17 +65,20 @@ const Favorites = () => {
             onChange={(e) => setSearchTerm(e.target.value)} 
           />
           <div className="recipes-list">
-            {filteredFavorites.length > 0 ? (
-              filteredFavorites.map(recipe => (
-                <div key={recipe.id} className="PublicatesCard">
-                  <Link to={`/recipe/${recipe.id}`}>
-                    <img src={recipe.img} alt={recipe.name} className='PublicatesCard__img' />
-                    <h3 className='PublicatesCard__title'>{recipe.name}</h3>
-                  </Link>
-                </div>
-              ))
-            ) : (
-              <p>У вас нет избранных рецептов.</p>
+            {favorites.length === 0 ? (
+              <p>Нет избранных рецептов.</p>
+              ) : (filteredFavorites.length === 0 ? (
+                <p>Избранные рецепты по поисковому запросу не найдены.</p>
+                ) : (
+                  filteredFavorites.map((favRecipe) => (
+                    <div key={favRecipe.recipeId} className="PublicatesCard">
+                      <Link to={`/recipe/${favRecipe.recipeId}`}>
+                        <img src={findRecipe(favRecipe.recipeId).image} alt={favRecipe.recipeName} className='PublicatesCard__img' />
+                        <h3 className='PublicatesCard__title'>{favRecipe.recipeName}</h3>
+                      </Link>
+                    </div>
+                  ))
+                )
             )}
           </div>
         </div>

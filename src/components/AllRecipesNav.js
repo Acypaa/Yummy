@@ -32,7 +32,6 @@ const AllRecipesNav = ({ addRecipe, handleSearch, onFilterChange, onApplyFilters
     }, []);
 
     const openAddRecipeModal = () => {
-        // setModalIsOpen(true);
         if (!currentUser) {
             // Если пользователь не авторизован, перенаправляем на страницу входа
             alert('Вы должны быть авторизованы для добавления рецепта');
