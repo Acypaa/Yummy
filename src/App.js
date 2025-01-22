@@ -17,28 +17,28 @@ import { useState } from 'react';
 
 
 const App = () => {
-    const [headerModalIsOpen, setHeaderModalIsOpen] = useState(false);
-    const [headerModalActiveTab, setHeaderModalActiveTab] = useState('login');
-    const [headerModalError, setHeaderModalError] = useState('');
-    const [headerModalIsLoggedIn, setHeaderModalIsLoggedIn] = useState(false);
+    const [modalIsOpen, setModalIsOpen] = useState(false);
+    const [modalActiveTab, setModalActiveTab] = useState('login');
+    const [modalError, setModalError] = useState('');
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
 
 
-    const openHeaderModal = (tab = 'login') => {
-        setHeaderModalActiveTab(tab);
-        setHeaderModalIsOpen(true);
-        setHeaderModalError('');
+    const openModal = (tab = 'login') => {
+        setModalActiveTab(tab);
+        setModalIsOpen(true);
+        setModalError('');
     };
 
     return (
         <BrowserRouter>
-            <Header modalIsOpen={headerModalIsOpen} setModalIsOpen={setHeaderModalIsOpen}
-                    modalActiveTab={headerModalActiveTab} setModalActiveTab={setHeaderModalActiveTab}
-                    modalError={headerModalError} setModalError={setHeaderModalError}
-                    modalIsLoggedIn={headerModalIsLoggedIn} setModalIsLoggedIn={setHeaderModalIsLoggedIn}
-                    openModal={openHeaderModal}
+            <Header modalIsOpen={modalIsOpen} setModalIsOpen={setModalIsOpen}
+                    modalActiveTab={modalActiveTab} setModalActiveTab={setModalActiveTab}
+                    modalError={modalError} setModalError={setModalError}
+                    isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}
+                    openModal={openModal}
             />
             <Routes>
-                <Route path="/" element={<Main modalIsLoggedIn={headerModalIsLoggedIn} setModalIsLoggedIn={setHeaderModalIsLoggedIn} openHeaderModal={openHeaderModal}/>} /> 
+                <Route path="/" element={<Main isLoggedIn={isLoggedIn} openModal={openModal}/>} /> 
                 <Route path="/recipes" element={<AllRecipesNav />} /> 
                 <Route path="/allrecipes" element={<AllRecipes />} /> 
                 <Route path="/recipe/:id" element={<Recipe />} /> 

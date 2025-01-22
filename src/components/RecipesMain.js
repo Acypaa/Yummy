@@ -4,7 +4,7 @@ import RecipesMainCircle from './RecipesMainCircle';
 import { Link } from "react-router-dom";
 import ModalWindow from './ModalWindow.js';
 
-const RecipesMain = ({isLoggedIn, setIsLoggedIn, openModal}) => {
+const RecipesMain = ({isLoggedIn, openModal}) => {
   return (
     <div className='RecipesMain'>
       <div className="Circle">
@@ -40,9 +40,6 @@ const RecipesMain = ({isLoggedIn, setIsLoggedIn, openModal}) => {
       {isLoggedIn ? (
         <div className="SignUp">
           <div className="SignUp__topBlank">
-            {/* <button className='SignUp__top-link' onClick={() => openModal('register')} >Зарегистрируйтесь</button>,<br/> */}
-            {/* чтобы начать добавлять<br/> */}
-            {/* рецепты */}
           </div>
           <img src="./img/girlMain.png" alt="" className='SignUp__girl'/>
           <div className="SignUp__bottom"></div>

@@ -5,8 +5,7 @@ import "../img/HeaderLogo.svg";
 import ModalWindow from './ModalWindow.js';
 import { PROFILE_ROUTE } from '../utils/consts';
 
-const Header = ({modalIsOpen, setModalIsOpen, modalActiveTab, setModalActiveTab, modalError, setModalError, openModal, modalIsLoggedIn, setModalIsLoggedIn}) => {
-
+const Header = ({modalIsOpen, setModalIsOpen, modalActiveTab, setModalActiveTab, modalError, setModalError, openModal, isLoggedIn, setIsLoggedIn}) => {
   return (
     <div>
       <div className='Header'>
@@ -16,7 +15,7 @@ const Header = ({modalIsOpen, setModalIsOpen, modalActiveTab, setModalActiveTab,
             <li><Link to="/" className='Header__link'>Главная</Link></li>
             <li><Link to="/Allrecipes" className='Header__link'>Рецепты</Link></li>
             <li>
-              {modalIsLoggedIn ? (
+              {isLoggedIn ? (
                 <Link to={PROFILE_ROUTE} className='Header__link'>Профиль</Link>
                 ) : (
                   <button className='Header__link Header__btn' onClick={() => openModal('login')}>
@@ -28,7 +27,7 @@ const Header = ({modalIsOpen, setModalIsOpen, modalActiveTab, setModalActiveTab,
         </div>
       </div>
       <ModalWindow isOpen={modalIsOpen} setIsOpen={setModalIsOpen} error={modalError} setError={setModalError}
-      activeTab={modalActiveTab} setActiveTab={setModalActiveTab} isLoggedIn={modalIsLoggedIn} setIsLoggedIn={setModalIsLoggedIn}
+      activeTab={modalActiveTab} setActiveTab={setModalActiveTab} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}
       />
     </div>
   );
