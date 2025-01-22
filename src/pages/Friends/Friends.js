@@ -60,16 +60,19 @@ const Friends = () => {
                         onChange={(e) => setSearchTerm(e.target.value)} // Обновляем состояние поискового запроса
                     />
                     <ul className='subscriptions-list'>
-                        {filteredSubscriptions.length > 0 ? (
-                            filteredSubscriptions.map((sub, index) => (
-                                <li key={index} className='subscription-item'>
-                                    <Link to={`/profile/${sub}`} className='subscription-link'>
-                                        {sub}
-                                    </Link>
-                                </li>
-                            ))
-                        ) : (
-                            <li>Нет подписок</li>
+                        {subscriptions.length === 0 ? (
+                            <li>Нет подписок.</li>
+                            ) : (filteredSubscriptions.length === 0 ? (
+                                <li>Подписки по поисковому запросу не найдены.</li>
+                                ) : (
+                                filteredSubscriptions.map((sub, index) => (
+                                    <li key={index} className='subscription-item'>
+                                        <Link to={`/profile/${sub}`} className='subscription-link'>
+                                            {sub}
+                                        </Link>
+                                    </li>
+                                    ))
+                                )
                         )}
                     </ul>
                 </div>

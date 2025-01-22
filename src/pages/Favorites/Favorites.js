@@ -9,19 +9,24 @@ const Favorites = () => {
   const navigate = useNavigate();
   const [username, setUsername] = useState('');
   const [favorites, setFavorites] = useState([]);
+  const [searchTerm, setSearchTerm] = useState(''); 
 
   useEffect(() => {
     const user = localStorage.getItem('currentUser');
     if (!user) {
       navigate('/');
     } else {
-      setUsername(JSON.parse(user).username);
-      
-      const favorites = JSON.parse(localStorage.getItem('favorites')) || {};
-      const userFavorites = favorites[JSON.parse(user).username] || [];
-      setFavorites(userFavorites);
+      const favoritesFromStorage = JSON.parse(localStorage.getItem('favorites')) || [];
+      setFavorites(favoritesFromStorage); 
+
+      const userData = JSON.parse(user);
+      setUsername(userData.username); 
     }
   }, [navigate]);
+
+  const filteredFavorites = favorites.filter(recipe =>
+    recipe.name && recipe.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   const handleLogout = () => {
     localStorage.removeItem('currentUser');
@@ -47,19 +52,24 @@ const Favorites = () => {
         <div className="profile__right">
           <h1 className='Profile__main-heading'>Избранное</h1>
           <button className='right__btn btn-friends'>Список избранных</button>
-          <input type="text" className='Profile__input' placeholder='Поиск избранных' />
-          <div className="favorites-container">
-            {favorites.length > 0 ? (
-              favorites.map((recipe, index) => (
-                <div key={index} className="recipe-card">
-                  <h3>{recipe.recipeName}</h3>
-                  <Link to={`/recipe/${recipe.recipeId}`}>
-                    <img src={`path/to/your/img/${recipe.recipeId}.jpg`} alt={recipe.recipeName} />
+          <input 
+            type="text" 
+            className='Profile__input' 
+            placeholder='Поиск избранных' 
+            onChange={(e) => setSearchTerm(e.target.value)} 
+          />
+          <div className="recipes-list">
+            {filteredFavorites.length > 0 ? (
+              filteredFavorites.map(recipe => (
+                <div key={recipe.id} className="PublicatesCard">
+                  <Link to={`/recipe/${recipe.id}`}>
+                    <img src={recipe.img} alt={recipe.name} className='PublicatesCard__img' />
+                    <h3 className='PublicatesCard__title'>{recipe.name}</h3>
                   </Link>
                 </div>
               ))
             ) : (
-              <p>Нет избранных рецептов.</p>
+              <p>У вас нет избранных рецептов.</p>
             )}
           </div>
         </div>

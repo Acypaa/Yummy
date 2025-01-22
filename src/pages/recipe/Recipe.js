@@ -60,33 +60,24 @@ const Recipe = () => {
     };
 
     const handleAddToFavorites = () => {
-        if (!currentUser) {
-            alert('Пожалуйста, войдите в систему, чтобы добавлять рецепты в избранное.');
-            return;
-        }
-
+        const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+        const recipeInFavorites = favorites.find(fav => fav.id === recipe.id);
         if (recipe.author === currentUser.username) {
             alert('Вы не можете добавить свой рецепт в избранное.');
             return;
         }
-
-        const updatedFavorites = { ...favorites };
-        const userFavorites = updatedFavorites[currentUser.username] || [];
-
-        if (isFavorite) {
-            // Удаляем рецепт из избранного
-            updatedFavorites[currentUser.username] = userFavorites.filter(fav => fav.recipeId !== recipe.id);
-            setIsFavorite(false);
-            alert('Рецепт удален из избранного.');
+        if (!recipeInFavorites) {
+            favorites.push({ ...recipe, username: JSON.parse(localStorage.getItem('currentUser')).username });
+            localStorage.setItem('favorites', JSON.stringify(favorites));
+            alert('Рецепт добавлен в избранное!');
         } else {
-            // Добавляем рецепт в избранное
-            userFavorites.push({ recipeId: recipe.id, recipeName: recipe.name });
-            updatedFavorites[currentUser.username] = userFavorites;
-            setIsFavorite(true);
-            alert('Рецепт добавлен в избранное.');
+            const updatedFavorites = favorites.filter(fav => fav.id !== recipe.id);
+            localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
+            alert('Рецепт удален из избранного!');
         }
-
-        localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
+    
+        console.log(favorites); // Выводим все избранные рецепты после добавления/удаления
     };
 
     return (
@@ -107,7 +98,7 @@ const Recipe = () => {
                         <img src="../img/Recipe/fav.png" alt="" />
                     </button>
                     <button className='top__right-btn' onClick={handleShare}>Поделиться <img src="../img/Recipe/repost.png" alt="" /></button>
-                    <button className='top__right-btn'>Комментарии <img src="../img/Recipe/comment.png" alt="" /></button>
+                    {/* <button className='top__right-btn'>Комментарии <img src="../img/Recipe/comment.png" alt="" /></button> */}
                     <button className='top__right-btn' onClick={() => handleDelete(recipe.id)}>Удалить</button> 
                 </div> 
             </div>

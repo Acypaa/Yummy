@@ -113,8 +113,26 @@
 }
 
 .SignUp__top-link {
-  text-decoration: none;
   color: rgba(206, 32, 32, 1);
+  font-weight: 900;
+  line-height: 15.6px;
+  font-size: 16px;
+  letter-spacing: 3%;
+  text-transform: uppercase;
+  text-decoration: none;
+    background-image: linear-gradient(currentColor, currentColor);
+    background-position: 0% 100%;
+    background-repeat: no-repeat;
+    background-size: 0% 2px;
+    transition: background-size .3s;
+
+  border: none;
+  background-color: rgba(0, 0, 0, 0);
+  cursor: pointer;
+}
+
+.SignUp__top-link:hover {
+  background-size: 100% 2px;
 }
 
 .SignUp__bottom {
